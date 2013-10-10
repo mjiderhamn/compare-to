@@ -1,6 +1,7 @@
-*.class
-
-# Package Files #
-*.jar
-*.war
-*.ear
+target
+.*
+*.iml
+*.ipr
+*.iws
+*.log
+rebel.xml
