@@ -30,7 +30,7 @@ Example usage - short syntax
 import static se.jiderhamn.CompareTo.is;
 
 ...
-  boolean oneIsZero = is(1).eq(0));
+  boolean oneIsZero = is(1).eq(0);
   ...
 
   boolean value1LessThanValue2 = is(value1).lt(value2);

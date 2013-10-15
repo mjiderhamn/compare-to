@@ -41,9 +41,9 @@ package se.jiderhamn;
  *    ...
  *  }
  *
- *  // Short syntax 
+ *  // Abbreviated syntax 
  *
- *  boolean oneIsZero = is(1).eq(0));
+ *  boolean oneIsZero = is(1).eq(0);
  *  ...
  *
  *  boolean value1LessThanValue2 = is(value1).lt(value2);
