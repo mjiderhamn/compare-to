@@ -24,21 +24,18 @@ package se.jiderhamn;
  *
  *...
  *
- *  if(is(1).equalTo(0)) {
+ *  boolean oneIsZero = is(1).equalTo(0);
+ *  ...
+ *    
+ *  boolean value1LessThanValue2 = is(value1).lessThan(value2);
+ *  ...
+ *    
+ *  if(is(a).lessThanOrEqualTo(b)) {
  *    ...
  *  }
  *
- *  if(is(value1).lessThan(value2)) {
- *    ...
- *  }
- *
- *  if(is(a).lessThanOrEqualTo(a)) {
- *    ...
- *  }
- *
- *  if(is(date1).greaterThan(date2)) {
- *    ...
- *  }
+ *  boolean date1AfterDate2 = is(date1).greaterThan(date2);
+ *  ...
  *
  *  if(is(a).greaterThanOrEqualTo(a)) {
  *    ...
@@ -46,21 +43,18 @@ package se.jiderhamn;
  *
  *  // Short syntax 
  *
- *  if(is(1).eq(0)) {
+ *  boolean oneIsZero = is(1).eq(0));
+ *  ...
+ *
+ *  boolean value1LessThanValue2 = is(value1).lt(value2);
+ *  ...
+ *
+ *  if(is(a).le(b)) {
  *    ...
  *  }
  *
- *  if(is(value1).lt(value2)) {
- *    ...
- *  }
- *
- *  if(is(a).le(a)) {
- *    ...
- *  }
- *
- *  if(is(date1).gt(date2)) {
- *    ...
- *  }
+ *  boolean date1AfterDate2 = is(date1).gt(date2);
+ *  ...
  *
  *  if(is(a).ge(a)) {
  *    ...

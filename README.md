@@ -7,24 +7,20 @@ Example usage - expressive syntax
 import static se.jiderhamn.CompareTo.is;
 
 ...
-
-  if(is(1).equalTo(0)) {
-    ...
-  }
-
-  if(is(value1).lessThan(value2)) {
-    ...
-  }
-
+  boolean oneIsZero = is(1).equalTo(0);
+  ...
+    
+  boolean value1LessThanValue2 = is(value1).lessThan(value2);
+  ...
+    
   if(is(a).lessThanOrEqualTo(b)) {
     ...
   }
 
-  if(is(date1).greaterThan(date2)) {
-    ...
-  }
+  boolean date1AfterDate2 = is(date1).greaterThan(date2);
+  ...
 
-  if(is(a).greaterThanOrEqualTo(b)) {
+  if(is(a).greaterThanOrEqualTo(a)) {
     ...
   }
 ```
@@ -34,24 +30,20 @@ Example usage - short syntax
 import static se.jiderhamn.CompareTo.is;
 
 ...
+  boolean oneIsZero = is(1).eq(0));
+  ...
 
-  if(is(1).eq(0)) {
-    ...
-  }
-
-  if(is(value1).lt(value2)) {
-    ...
-  }
+  boolean value1LessThanValue2 = is(value1).lt(value2);
+  ...
 
   if(is(a).le(b)) {
     ...
   }
 
-  if(is(date1).gt(date2)) {
-    ...
-  }
+  boolean date1AfterDate2 = is(date1).gt(date2);
+  ...
 
-  if(is(a).ge(b)) {
+ if(is(a).ge(a)) {
     ...
   }
 ```
