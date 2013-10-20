@@ -26,18 +26,13 @@ package se.jiderhamn;
  *
  *  boolean oneIsZero = is(1).equalTo(0);
  *  boolean aIsNotZero = is(a).notEqualTo(0);
- *  ...
- *  
- *    
  *  boolean value1LessThanValue2 = is(value1).lessThan(value2);
- *  ...
  *    
  *  if(is(a).lessThanOrEqualTo(b)) {
  *    ...
  *  }
  *
  *  boolean date1AfterDate2 = is(date1).greaterThan(date2);
- *  ...
  *
  *  if(is(a).greaterThanOrEqualTo(a)) {
  *    ...
@@ -47,17 +42,13 @@ package se.jiderhamn;
  *
  *  boolean oneIsZero = is(1).eq(0);
  *  boolean aIsNotZero = is(a).ne(0);
- *  ...
- *
  *  boolean value1LessThanValue2 = is(value1).lt(value2);
- *  ...
  *
  *  if(is(a).le(b)) {
  *    ...
  *  }
  *
  *  boolean date1AfterDate2 = is(date1).gt(date2);
- *  ...
  *
  *  if(is(a).ge(a)) {
  *    ...
