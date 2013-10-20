@@ -207,4 +207,50 @@ public class CompareToTest {
     assertFalse(is(BigDecimal.ZERO).after(BigDecimal.ONE));
   }
    
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // Zero
+
+  @Test
+  public void zero() {
+    // Integer
+    assertFalse(is(1).zero());
+    assertFalse(is(-1).zero());
+    assertTrue(is(0).zero());
+
+    // Long
+    assertFalse(is(1L).zero());
+    assertFalse(is(-1L).zero());
+    assertTrue(is(0L).zero());
+
+    // Short
+    assertFalse(is((short) 1).zero());
+    assertFalse(is((short) -1L).zero());
+    assertTrue(is((short) 0L).zero());
+
+    // Byte
+    assertFalse(is((byte) 1).zero());
+    assertFalse(is((byte) -1L).zero());
+    assertTrue(is((byte) 0L).zero());
+
+    // Float
+    assertFalse(is(1f).zero());
+    assertFalse(is(-1f).zero());
+    assertTrue(is(0f).zero());
+
+    // Double
+    assertFalse(is(1D).zero());
+    assertFalse(is(-1D).zero());
+    assertTrue(is(0D).zero());
+
+    // BigDecimal
+    assertFalse(is(BigDecimal.ONE).zero());
+    assertFalse(is(new BigDecimal("-1")).zero());
+    assertTrue(is(BigDecimal.ZERO).zero());
+    assertTrue(is(new BigDecimal("0.000000")).zero());
+  }
+
+  @Test(expected = IllegalArgumentException.class) // Does not work for strings
+  public void zeroString() {
+    is("foo").zero();
+  }
 }

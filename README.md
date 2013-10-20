@@ -9,6 +9,7 @@ import static se.jiderhamn.CompareTo.is;
 ...
   boolean oneIsZero = is(1).equalTo(0);
   boolean aIsNotZero = is(a).notEqualTo(0);
+  boolean bIsZero = is(b).zero();
   boolean value1LessThanValue2 = is(value1).lessThan(value2);
     
   if(is(a).lessThanOrEqualTo(b)) {
@@ -17,7 +18,7 @@ import static se.jiderhamn.CompareTo.is;
 
   boolean date1AfterDate2 = is(date1).greaterThan(date2);
 
-  if(is(a).greaterThanOrEqualTo(a)) {
+  if(is(a).greaterThanOrEqualTo(b)) {
     ...
   }
 ```
@@ -37,7 +38,7 @@ import static se.jiderhamn.CompareTo.is;
 
   boolean date1AfterDate2 = is(date1).gt(date2);
 
-  if(is(a).ge(a)) {
+  if(is(a).ge(b)) {
     ...
   }
 ```
