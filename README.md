@@ -50,6 +50,6 @@ The library is available in Maven Central with the following details:
 <dependency>
   <groupId>se.jiderhamn</groupId>
   <artifactId>compare-to</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
 </dependency>
 ```

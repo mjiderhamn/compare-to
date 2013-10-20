@@ -178,7 +178,7 @@ public class CompareTo<T extends Comparable<T>> {
    * Is the owner equal to zero (regardless of scale)? Supported types are Integer, Long, Short, Byte, Float, Double
    * and BigDecimal.
    * @throws IllegalArgumentException for any non-numeric owner type.
-   * */
+   */
   public boolean zero() {
     if(! Number.class.isInstance(this.comparable)) {
       throw new IllegalArgumentException("zero() can only be used on " + Number.class.getName() + " subclasses");
