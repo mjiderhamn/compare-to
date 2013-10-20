@@ -41,6 +41,11 @@ public class CompareToTest {
     
     // BigDecimal
     assertTrue(is(new BigDecimal(1)).equalTo(new BigDecimal("1.0000000000")));
+    
+    // null
+    assertFalse(is(0).equalTo(null));
+    assertFalse(is((Integer) null).equalTo(0));
+    assertTrue(is((Integer) null).equalTo(null));
   }
   
   @Test
@@ -48,6 +53,42 @@ public class CompareToTest {
     assertTrue(is(1).eq(1));
     assertFalse(is(1).eq(0));
     assertFalse(is(1).eq(2));
+
+    // null
+    assertFalse(is(0).eq(null));
+    assertFalse(is((Integer) null).eq(0));
+    assertTrue(is((Integer) null).eq(null));
+  }
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // Non-equality
+
+  @Test
+  public void notEqualTo() {
+    // Integers
+    assertFalse(is(1).notEqualTo(1));
+    assertTrue(is(1).notEqualTo(0));
+    assertTrue(is(1).notEqualTo(2));
+    
+    // BigDecimal
+    assertFalse(is(new BigDecimal(1)).notEqualTo(new BigDecimal("1.0000000000")));
+    
+    // null
+    assertTrue(is(0).notEqualTo(null));
+    assertTrue(is((Integer) null).notEqualTo(0));
+    assertFalse(is((Integer) null).notEqualTo(null));
+  }
+  
+  @Test
+  public void ne() {
+    assertFalse(is(1).ne(1));
+    assertTrue(is(1).ne(0));
+    assertTrue(is(1).ne(2));
+
+    // null
+    assertTrue(is(0).ne(null));
+    assertTrue(is((Integer) null).ne(0));
+    assertFalse(is((Integer) null).ne(null));
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -97,6 +138,17 @@ public class CompareToTest {
     assertTrue(is(BigDecimal.ZERO).le(BigDecimal.ONE));
   }
   
+  @Test
+  public void before() {
+    assertFalse(is(0).before(-1));
+    assertFalse(is(0).before(0));
+    assertTrue(is(0).before(1));
+
+    assertFalse(is(BigDecimal.ZERO).before(BigDecimal.ZERO.subtract(BigDecimal.ONE)));
+    assertFalse(is(BigDecimal.ZERO).before(BigDecimal.ZERO));
+    assertTrue(is(BigDecimal.ZERO).before(BigDecimal.ONE));
+  }
+  
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // Greater
   
@@ -143,4 +195,16 @@ public class CompareToTest {
     assertTrue(is(BigDecimal.ZERO).ge(BigDecimal.ZERO));
     assertFalse(is(BigDecimal.ZERO).ge(BigDecimal.ONE));
   }
+
+  @Test
+  public void after() {
+    assertTrue(is(0).after(-1));
+    assertFalse(is(0).after(0));
+    assertFalse(is(0).after(1));
+
+    assertTrue(is(BigDecimal.ZERO).after(BigDecimal.ZERO.subtract(BigDecimal.ONE)));
+    assertFalse(is(BigDecimal.ZERO).after(BigDecimal.ZERO));
+    assertFalse(is(BigDecimal.ZERO).after(BigDecimal.ONE));
+  }
+   
 }

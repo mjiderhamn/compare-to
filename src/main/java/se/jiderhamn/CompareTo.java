@@ -25,7 +25,9 @@ package se.jiderhamn;
  *...
  *
  *  boolean oneIsZero = is(1).equalTo(0);
+ *  boolean aIsNotZero = is(a).notEqualTo(0);
  *  ...
+ *  
  *    
  *  boolean value1LessThanValue2 = is(value1).lessThan(value2);
  *  ...
@@ -44,6 +46,7 @@ package se.jiderhamn;
  *  // Abbreviated syntax 
  *
  *  boolean oneIsZero = is(1).eq(0);
+ *  boolean aIsNotZero = is(a).ne(0);
  *  ...
  *
  *  boolean value1LessThanValue2 = is(value1).lt(value2);
@@ -72,24 +75,52 @@ public class CompareTo<T extends Comparable<T>> {
     this.comparable = comparable;
   }
   
-  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  // Equality
-  
   /** Create new instance that allows for chained comparison */
   public static <C extends Comparable<C>> CompareTo<C> is(C comparable) {
     return new CompareTo<C>(comparable);
   }
   
-  /** Is the owner equal to the argument? */
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // Equality
+  
+  /** 
+   * Is the owner equal to the argument?
+   * Note specifically that null equals null, but not non-null.
+   */
   public boolean equalTo(T that) {
+    if(this.comparable == null) {
+      return (that == null);
+    }
+    else if(that == null)
+      return false; // Since this was non-null
+    
     return this.comparable.compareTo(that) == 0;
   }
   
-  /** Is the owner equal to the argument? */
+  /** 
+   * Is the owner equal to the argument?
+   * Note specifically that null equals null, but not non-null.
+   */
   public boolean eq(T that) {
-    return this.comparable.compareTo(that) == 0;
+    return equalTo(that);
   }
   
+  /** 
+   * Is the owner not equal to the argument?
+   * Note specifically that null equals null, but not non-null.
+   */
+  public boolean notEqualTo(T that) {
+    return ! equalTo(that);
+  }
+
+  /** 
+   * Is the owner not equal to the argument?
+   * Note specifically that null equals null, but not non-null.
+   */
+  public boolean ne(T that) {
+    return ! equalTo(that);
+  }
+
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // Less
   
@@ -113,6 +144,11 @@ public class CompareTo<T extends Comparable<T>> {
     return this.comparable.compareTo(that) <= 0;
   }
   
+  /** Is the owner before the argument? Same as {@link #lessThan(Comparable)} */
+  public boolean before(T that) {
+    return this.comparable.compareTo(that) < 0;
+  }
+
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // Greater
   
@@ -135,5 +171,10 @@ public class CompareTo<T extends Comparable<T>> {
   public boolean ge(T that) {
     return this.comparable.compareTo(that) >= 0;
   }
-  
+
+  /** Is the owner after the argument? Same as {@link #greaterThan(Comparable)} */
+  public boolean after(T that) {
+    return this.comparable.compareTo(that) > 0;
+  }
+
 }

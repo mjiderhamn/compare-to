@@ -8,6 +8,7 @@ import static se.jiderhamn.CompareTo.is;
 
 ...
   boolean oneIsZero = is(1).equalTo(0);
+  boolean aIsNotZero = is(a).notEqualTo(0);
   ...
     
   boolean value1LessThanValue2 = is(value1).lessThan(value2);
@@ -31,6 +32,7 @@ import static se.jiderhamn.CompareTo.is;
 
 ...
   boolean oneIsZero = is(1).eq(0);
+  boolean aIsNotZero = is(a).ne(0);
   ...
 
   boolean value1LessThanValue2 = is(value1).lt(value2);
@@ -46,4 +48,15 @@ import static se.jiderhamn.CompareTo.is;
  if(is(a).ge(a)) {
     ...
   }
+```
+
+# Maven
+
+Available from Maven Central using
+```xml
+<dependency>
+  <groupId>se.jiderhamn</groupId>
+  <artifactId>compare-to</artifactId>
+  <version>1.0.0</version>
+</dependency>
 ```
