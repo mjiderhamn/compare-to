@@ -212,6 +212,8 @@ public class CompareToTest {
 
   @Test
   public void zero() {
+    assertFalse(is(null).zero());
+    
     // Integer
     assertFalse(is(1).zero());
     assertFalse(is(-1).zero());

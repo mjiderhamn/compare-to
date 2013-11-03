@@ -176,12 +176,17 @@ public class CompareTo<T extends Comparable<T>> {
 
   /** 
    * Is the owner equal to zero (regardless of scale)? Supported types are Integer, Long, Short, Byte, Float, Double
-   * and BigDecimal.
+   * and BigDecimal. Note that {@code is(null).zero() == false}.
    * @throws IllegalArgumentException for any non-numeric owner type.
    */
   public boolean zero() {
-    if(! Number.class.isInstance(this.comparable)) {
-      throw new IllegalArgumentException("zero() can only be used on " + Number.class.getName() + " subclasses");
+    if(this.comparable == null)
+      return false; // null != 0
+
+    // BigDecimal is the most likely use case, because of it's scale that prevents simple == 0
+    if(BigDecimal.class.isInstance(this.comparable)) {
+      Comparable<BigDecimal> c = (Comparable<BigDecimal>) this.comparable;
+      return c.compareTo(BigDecimal.ZERO) == 0;
     }
 
     if(Integer.class.isInstance(this.comparable)) {
@@ -204,11 +209,6 @@ public class CompareTo<T extends Comparable<T>> {
       return c.compareTo(0D) == 0;
     }
 
-    if(BigDecimal.class.isInstance(this.comparable)) {
-      Comparable<BigDecimal> c = (Comparable<BigDecimal>) this.comparable;
-      return c.compareTo(BigDecimal.ZERO) == 0;
-    }
-
     if(Short.class.isInstance(this.comparable)) {
       Comparable<Short> c = (Comparable<Short>) this.comparable;
       return c.compareTo((short) 0) == 0;
@@ -219,6 +219,6 @@ public class CompareTo<T extends Comparable<T>> {
       return c.compareTo((byte) 0) == 0;
     }
 
-    throw new IllegalArgumentException("Unsupported " + Number.class.getName() + " subclass");
+    throw new IllegalArgumentException("zero() does not support " + this.comparable.getClass());
   }
 }
